@@ -46,64 +46,6 @@ The system enforces strict multi-role authorization across three distinct roles:
 
 ---
 
-## 📋 Requirements
-
-Ensure your machine has the following installed:
-- PHP >= 8.2 with PDO, OpenSSL, Mbstring, and cURL extensions (included in XAMPP)
-- MySQL / MariaDB (via XAMPP)
-- Composer (v2.x)
-- Node.js (v18+) & NPM
-
----
-
-## 🚀 Quick Setup & Installation
-
-### Step 1: Open Terminal in Project Directory
-```bash
-cd "C:\Users\Admin\.gemini\antigravity\scratch\student-platform"
-```
-
-### Step 2: Ensure Dependencies Are Installed
-```bash
-composer install
-npm install
-```
-
-### Step 3: Configure Environment
-Copy `.env.example` to `.env` if not already present:
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-Verify your `.env` database settings:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=student_platform
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### Step 4: Run Migrations and Seed Demo Data
-Ensure MySQL is running in your XAMPP Control Panel, then execute:
-```bash
-php artisan migrate:fresh --seed
-```
-
-### Step 5: Compile Frontend Assets
-```bash
-npm run build
-```
-
-### Step 6: Start the Development Server
-```bash
-php artisan serve
-```
-The application will be accessible at: **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
-
----
 
 ## 🔑 Demo Accounts
 
@@ -124,12 +66,6 @@ The database seeder automatically populates the system with realistic demo accou
 
 ---
 
-## 🧪 Running Automated Tests
-
-Run the full PHPUnit test suite covering role authorization, route protection, and academic business logic:
-```bash
-php artisan test
-```
 
 All 35 tests verify:
 - Admin access and dashboard protection
@@ -232,10 +168,4 @@ student-platform/
 
 ---
 
-## 🎓 University Presentation Notes
 
-When presenting this project to professors and evaluators:
-1. **Model-View-Controller (MVC)**: Walk through how `routes/web.php` maps clean HTTP requests to dedicated controllers in `app/Http/Controllers/`, processing data with Eloquent models and rendering views with Blade.
-2. **Database Relationships**: Show the Eloquent relationship methods (`hasMany`, `belongsTo`, `hasOne`) and the database constraints (`unique(['student_id', 'course_id'])`).
-3. **Role Authorization**: Explain `RoleMiddleware.php` and demonstrate logging in with different accounts to prove doctors and students cannot access admin routes, and doctors can only grade their own courses.
-4. **Clean UI**: Showcase the responsive layout, mobile offcanvas sidebar, clean stat cards, and intuitive modals.
